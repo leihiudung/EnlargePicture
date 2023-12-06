@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="nav_icon">images/左上角LOGO.png</file>
+        <file alias="navi_close_icon">images/关闭图标1.png</file>
+        <file alias="navi_min_icon">images/关闭图标.png</file>
+    </qresource>
+</RCC>
