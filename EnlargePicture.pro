@@ -10,18 +10,34 @@ CONFIG += c++17
 win32: {
 LIBS += -lDwmapi -lUxTheme -lUser32
 }
+msvc {
+    QMAKE_CFLAGS += /utf-8
+    QMAKE_CXXFLAGS += /utf-8
+}
 
 SOURCES += \
+    accountwidget.cpp \
+    enlargewidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    menberwidget.cpp \
+    settingwidget.cpp \
     widget.cpp
 
 HEADERS += \
+    accountwidget.h \
+    enlargewidget.h \
     mainwindow.h \
+    menberwidget.h \
+    settingwidget.h \
     widget.h
 
 FORMS += \
+    accountwidget.ui \
+    enlargewidget.ui \
     mainwindow.ui \
+    menberwidget.ui \
+    settingwidget.ui \
     widget.ui
 
 # Default rules for deployment.
