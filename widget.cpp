@@ -45,12 +45,31 @@ widget::widget(QWidget *parent) :
     for (int i = 0; i < optionStrList.count(); ++i) {
         initItem(optionStrList[i], optionPixmapList[i]);
     }
-
+    ui->option_list_widget->setCurrentRow(0);
     initView();
+
+    ui->function_stack_widget->addWidget(new EnlargeWidget());
+
+    ui->function_stack_widget->insertWidget(1, new AccountWidget());
+
+    ui->function_stack_widget->insertWidget(2, new MenberWidget());
+
+    ui->function_stack_widget->insertWidget(3, new SettingWidget());
 
 //    connect(ui->option_list_widget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(itemClicked(QListWidgetItem*)));
     connect(ui->option_list_widget,&QListWidget::pressed,[=](QModelIndex pos){
-        qDebug()<<"m_ListWidget pos.row:"<<pos.row();
+//        qDebug()<<"m_ListWidget pos.row:"<<pos.row();
+        int optionIndex = pos.row();
+        ui->function_stack_widget->setCurrentIndex(optionIndex);
+        if (optionIndex == 0) {
+
+        } else if (optionIndex == 1) {
+
+        } else if (optionIndex == 2) {
+
+        } else  {
+
+        }
     });
 }
 
@@ -68,17 +87,17 @@ void widget::initView()
     qDebug("%f", ui->icon_label->width());
 
     ui->min_btn->setStyleSheet("QToolButton{border-image:url(:/images/navi_min_icon) 0 0 42 0;}"
-                                 "QToolButton:hover{border-image:url(:/images/navi_min_icon) 14 0 28 0;}"
-                                 "QToolButton:pressed{border-image:url(:/images/navi_min_icon) 28 0 14 0;}"
-                                 "QToolButton:disabled{border-image:url(:/images/navi_min_icon) 42 0 0 0;}");
+                                "QToolButton:hover{border-image:url(:/images/navi_min_icon) 14 0 28 0;}"
+                                "QToolButton:pressed{border-image:url(:/images/navi_min_icon) 28 0 14 0;}"
+                                "QToolButton:disabled{border-image:url(:/images/navi_min_icon) 42 0 0 0;}");
 
     ui->close_btn->setStyleSheet("QToolButton{border-image:url(:/images/navi_close_icon) 0 0 42 0;}"
-                                 "QToolButton:hover{border-image:url(:/images/navi_close_icon) 14 0 28 0;}"
-                                "QToolButton:pressed{border-image:url(:/images/navi_close_icon) 28 0 14 0;}"
-                                 "QToolButton:disabled{border-image:url(:/images/navi_close_icon) 42 0 0 0;}");
+                                    "QToolButton:hover{border-image:url(:/images/navi_close_icon) 14 0 28 0;}"
+                                    "QToolButton:pressed{border-image:url(:/images/navi_close_icon) 28 0 14 0;}"
+                                    "QToolButton:disabled{border-image:url(:/images/navi_close_icon) 42 0 0 0;}");
 
     ui->option_list_widget->setStyleSheet("QListWidget{outline:0px;border: none;background-color: transparent;}"
-                                          "QListWidget::Item{background-color: #4586E4;}"
+                                            "QListWidget::Item{background-color: #4586E4;}"
                                             "QListWidget::Item:hover{background-color: #3d7dd8; }"
                                             "QListWidget::item:selected{background-color: #2965BB;}");
 }
@@ -131,67 +150,40 @@ void widget::initItemWidget()
     //文字框高度
     const int textHight = 30;
 
-    //图片框距左边界距离
-    const int imgMarin = 20;
+    //生成图标对象
+    QPixmap iconPixmap(24, 24);
 
-    //获得图片路径
-    QString strPath = "./library/1.bmp";
+    // 在图标上生成QPainter对象
+    QPainter painter(&iconPixmap);
 
-    QFileInfo fi(strPath);
-//    if(fi.isFile())
-//    {
+    // 设置画笔颜色
+    painter.setPen(QColor(0, 0, 0));
 
-        //生成图像objPixmap
-        QPixmap objPixmap(strPath);
+    // 设置字体：SimSun、大小15
+    QFont font;
+    font.setFamily("SimSun");
+    font.setPointSize(15);
+    painter.setFont(font);
 
-        //生成图标对象
-        QPixmap iconPixmap(24, 24);
-//        iconPixmap.fill(QColor(255,255,255));
+    // 定义文本框矩形
+    const QRect rectangle = QRect(0, 0, 24, textHight);
+    // 绘制文本
+    painter.drawText(rectangle, Qt::AlignHCenter, QString("放大图片"));
 
-        // 在图标上生成QPainter对象
-        QPainter painter(&iconPixmap);
+    // 反走样
+    painter.setRenderHint(QPainter::Antialiasing, true);
 
-        // 设置画笔颜色
-        painter.setPen(QColor(0, 0, 0));
+    // 为单元项添加图标对象
+    QListWidgetItem *pItem = new QListWidgetItem(QIcon(iconPixmap.scaled(QSize(24,24),Qt::KeepAspectRatio,Qt::SmoothTransformation)),QString("放大图片"));
 
-        // 设置字体：SimSun、大小15
-        QFont font;
-        font.setFamily("SimSun");
-        font.setPointSize(15);
-        painter.setFont(font);
+    QListWidgetItem *pItem2 = new QListWidgetItem(QIcon(iconPixmap.scaled(QSize(24,24),Qt::KeepAspectRatio,Qt::SmoothTransformation)),QString("登录账号"));
 
-        // 定义文本框矩形
-        const QRect rectangle = QRect(0, 0, 24, textHight);
-        // 绘制文本
-        painter.drawText(rectangle, Qt::AlignHCenter, QString("放大图片"));
+    // 设置单元项的宽度和高度
+    pItem->setSizeHint(QSize(24 ,24));
+    pItem2->setSizeHint(QSize(24 ,24));
+    ui->option_list_widget->insertItem(0, pItem);
+    ui->option_list_widget->insertItem(1, pItem2);
 
-        // 反走样
-        painter.setRenderHint(QPainter::Antialiasing, true);
-
-        // 定义绘图框矩形,画图
-//        const QRect img_rectangle = QRect(imgMarin, textHight, 24-(2*imgMarin), 24-textHight-imgMarin);
-//        painter.drawPixmap(img_rectangle, objPixmap);
-
-        QPoint picPoint (0, 20);
-        // 定义绘图框矩形,并画图
-        const QRect img2_rectangle = QRect(0, 0, textHight, textHight);
-        QPixmap objPixmap2(":/images/option_enlarge");
-        painter.drawPixmap(picPoint, objPixmap2);
-
-        painter.drawText(rectangle, Qt::AlignLeft, QString("ASSS"));
-
-        // 为单元项添加图标对象
-        QListWidgetItem *pItem = new QListWidgetItem(QIcon(iconPixmap.scaled(QSize(24,24),Qt::KeepAspectRatio,Qt::SmoothTransformation)),QString("放大图片"));
-
-        QListWidgetItem *pItem2 = new QListWidgetItem(QIcon(iconPixmap.scaled(QSize(24,24),Qt::KeepAspectRatio,Qt::SmoothTransformation)),QString("登录账号"));
-
-        // 设置单元项的宽度和高度
-        pItem->setSizeHint(QSize(24 ,24));
-        pItem2->setSizeHint(QSize(24 ,24));
-        ui->option_list_widget->insertItem(0, pItem);
-        ui->option_list_widget->insertItem(1, pItem2);
-
-        //    }
 }
 
 void widget::itemClicked(QListWidgetItem *item)

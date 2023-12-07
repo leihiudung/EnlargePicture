@@ -7,5 +7,6 @@
         <file alias="option_enlarge">images/放大图片.png</file>
         <file alias="option_setting">images/基础设置.png</file>
         <file alias="option_menber">images/开通会员.png</file>
+        <file alias="enlarge_add_img">images/添加图片-中央.png</file>
     </qresource>
 </RCC>

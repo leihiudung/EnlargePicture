@@ -374,51 +374,8 @@ background-color: white;
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>-1</number>
            </property>
-           <widget class="EnlargeWidget" name="page">
-            <widget class="QPushButton" name="pushButton">
-             <property name="geometry">
-              <rect>
-               <x>340</x>
-               <y>100</y>
-               <width>75</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="page_2">
-            <widget class="QPushButton" name="pushButton_2">
-             <property name="geometry">
-              <rect>
-               <x>300</x>
-               <y>100</y>
-               <width>75</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_3">
-             <property name="geometry">
-              <rect>
-               <x>570</x>
-               <y>250</y>
-               <width>75</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
-           </widget>
           </widget>
          </item>
         </layout>
@@ -429,16 +386,6 @@ background-color: white;
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>EnlargeWidget</class>
-   <extends>QWidget</extends>
-   <header>enlargewidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
- <resources>
-  <include location="main.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

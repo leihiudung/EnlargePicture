@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::EnlargeWidget *ui;
+
+private:
+    void initView();
+
 };
 
 #endif // ENLARGEWIDGET_H
