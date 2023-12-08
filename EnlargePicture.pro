@@ -21,6 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menberwidget.cpp \
+    selectedpicitemwidget.cpp \
     settingwidget.cpp \
     widget.cpp
 
@@ -29,6 +30,7 @@ HEADERS += \
     enlargewidget.h \
     mainwindow.h \
     menberwidget.h \
+    selectedpicitemwidget.h \
     settingwidget.h \
     widget.h
 
@@ -37,6 +39,7 @@ FORMS += \
     enlargewidget.ui \
     mainwindow.ui \
     menberwidget.ui \
+    selectedpicitemwidget.ui \
     settingwidget.ui \
     widget.ui
 

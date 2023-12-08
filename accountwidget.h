@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::AccountWidget *ui;
+
+private:
+    void initView();
 };
 
 #endif // ACCOUNTWIDGET_H

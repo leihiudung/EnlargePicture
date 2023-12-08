@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MenberWidget *ui;
+
+private:
+    void initView();
 };
 
 #endif // MENBERWIDGET_H

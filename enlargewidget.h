@@ -20,6 +20,9 @@ private:
 
 private:
     void initView();
+    void initItem();
+    void initItem(const QString &str, const QString &picmap);
+
 
 };
 

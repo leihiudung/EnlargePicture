@@ -6,9 +6,15 @@ MenberWidget::MenberWidget(QWidget *parent) :
     ui(new Ui::MenberWidget)
 {
     ui->setupUi(this);
+    initView();
 }
 
 MenberWidget::~MenberWidget()
 {
     delete ui;
+}
+
+void MenberWidget::initView()
+{
+
 }
