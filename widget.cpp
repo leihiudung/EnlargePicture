@@ -23,7 +23,7 @@ widget::widget(QWidget *parent) :
     //实例阴影shadow
     QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
     //设置阴影距离
-    shadow->setOffset(0, 8);
+    shadow->setOffset(0, 4);
     //    shadow->setYOffset(6);
     //设置阴影颜色
     shadow->setColor(QColor(0, 0, 0, 70));
