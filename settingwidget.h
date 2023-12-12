@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::SettingWidget *ui;
+
+private:
+    void initView();
 };
 
 #endif // SETTINGWIDGET_H

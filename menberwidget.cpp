@@ -64,6 +64,8 @@ void MenberWidget::initView()
                                            "font:12px Microsoft YaHei;"
                                            "color: #fff;text-align : left;padding-left: 8px;}");
 
+    ui->widget_9->setStyleSheet("QWidget{padding-left:9px;");
+
 
 
     //设置具体阴影

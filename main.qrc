@@ -25,5 +25,6 @@
         <file>images/注册2.png</file>
         <file alias="default_pic">images/default_pic.jpg</file>
         <file alias="member_recommand_img">images/推荐头.png</file>
+        <file alias="qr_code">images/百万事业.png</file>
     </qresource>
 </RCC>

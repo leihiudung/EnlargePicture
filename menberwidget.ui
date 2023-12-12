@@ -266,7 +266,7 @@ border-top: none;
 }
 </string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="88,8,8,8">
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="88,8,8,0">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -325,7 +325,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item>
           <widget class="QWidget" name="widget_9" native="true">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
             <item>
              <widget class="QPushButton" name="wechat_pay_highter_btn">
               <property name="text">
@@ -352,6 +358,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item>
           <widget class="QWidget" name="widget_10" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
             <item>
              <widget class="QPushButton" name="ali_pay_highter_btn">
               <property name="text">
@@ -518,6 +530,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item>
           <widget class="QWidget" name="widget_11" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
             <item>
              <widget class="QPushButton" name="wechat_pay_stand_btn">
               <property name="text">
@@ -544,6 +559,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item>
           <widget class="QWidget" name="widget_12" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
             <item>
              <widget class="QPushButton" name="ali_pay_stand_btn">
               <property name="text">
@@ -711,6 +729,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item>
           <widget class="QWidget" name="widget_13" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
             <item>
              <widget class="QPushButton" name="wechat_pay_base_btn">
               <property name="text">
@@ -737,6 +758,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item>
           <widget class="QWidget" name="widget_14" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <property name="leftMargin">
+             <number>22</number>
+            </property>
             <item>
              <widget class="QPushButton" name="ali_pay_base_btn">
               <property name="text">
