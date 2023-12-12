@@ -1,7 +1,12 @@
 #include "enlargewidget.h"
 #include "ui_enlargewidget.h"
 #include "selectedpicitemwidget.h"
+
+#include <QDebug>
+#include <QLabel>
+#include <QMouseEvent>
 #include <QPushButton>
+#include <QFileDialog>
 
 EnlargeWidget::EnlargeWidget(QWidget *parent) :
     QWidget(parent),
@@ -16,8 +21,9 @@ EnlargeWidget::EnlargeWidget(QWidget *parent) :
                                             "QListWidget::item:selected:!active{background:#E8E9ED;}"//按下后，当前活动控件不在列表中
                                             "QListWidget::item:selected{background:transparent;}"//按下后鼠标移动到其它位置
                                             );
-//    initItem("", ":/images/default_pic");
-    initItem();
+
+    connect(ui->pushButton, &QPushButton::clicked, this, &EnlargeWidget::selectPicBtnSlot);
+
 
 }
 
@@ -28,20 +34,18 @@ EnlargeWidget::~EnlargeWidget()
 
 void EnlargeWidget::initView()
 {
-
-    ui->select_pic_widget->setStyleSheet("QWidget#select_pic_widget{border-image:url(:/images/enlarge_add_border)}");
-
-    QPixmap iconaaa(":/images/enlarge_add_img");
-    iconaaa = iconaaa.scaled(20, 20);
-    ui->add_icon->setAlignment(Qt::AlignCenter);
-    ui->add_icon->setPixmap(iconaaa);
-
-
+    ui->selected_list_widget->setGridSize(QSize(30, 120));
+    ui->pushButton->setStyleSheet("QPushButton{background: transparent;border-radius: 2px;"
+                                  "border-image:url(:/images/enlarge_add_border);"
+                                   "border-radius: 15px;height:128px;"
+                                   "qproperty-icon: url(:/images/enlarge_add_img);icon-size: 20px 20px;"
+                                   "font:20px Microsoft YaHei;"
+                                   "color: #444;}");
 }
 
-void EnlargeWidget::initItem()
+void EnlargeWidget::initItem(const QString &imgPath)
 {
-    SelectedPicItemWidget *widget = new SelectedPicItemWidget(ui->selected_list_widget);
+    SelectedPicItemWidget *widget = new SelectedPicItemWidget(imgPath, ui->selected_list_widget);
     //将widget作为列表的item
     QListWidgetItem *ITEM = new QListWidgetItem();
     QSize size = ITEM->sizeHint();
@@ -105,3 +109,15 @@ void EnlargeWidget::initItem(const QString &str, const QString &picmap)
     ui->selected_list_widget->addItem(ITEM);
     ui->selected_list_widget->setItemWidget(ITEM, widget);
 }
+
+void EnlargeWidget::selectPicBtnSlot(bool checked)
+{
+    QString imagePath = QFileDialog::getOpenFileName(this, tr("选择文件保存路径"), "./", tr("图片(*.png* *.jpg* *.jpeg*)"));
+    if (imagePath.length() > 0) {
+        initItem(imagePath);
+    } else {
+
+    }
+
+}
+

@@ -2,6 +2,7 @@
 #define ENLARGEWIDGET_H
 
 #include <QWidget>
+class QMouseEvent;
 
 namespace Ui {
 class EnlargeWidget;
@@ -20,9 +21,11 @@ private:
 
 private:
     void initView();
-    void initItem();
+    void initItem(const QString &imgPath);
     void initItem(const QString &str, const QString &picmap);
 
+public slots:
+    void selectPicBtnSlot(bool checked);
 
 };
 

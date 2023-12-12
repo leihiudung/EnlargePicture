@@ -12,11 +12,12 @@ class SelectedPicItemWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit SelectedPicItemWidget(QWidget *parent = nullptr);
+    explicit SelectedPicItemWidget(const QString &imgPath, QWidget *parent = nullptr);
     ~SelectedPicItemWidget();
 
 private:
     Ui::SelectedPicItemWidget *ui;
+    QString imgPath;
 
 private:
     void initView();
