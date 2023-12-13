@@ -15,12 +15,17 @@ public:
     explicit SelectedPicItemWidget(const QString &imgPath, QWidget *parent = nullptr);
     ~SelectedPicItemWidget();
 
+signals:
+    void comfirnEnlargeParamSignal(int i, int j, int z);
+    void closeSelectedPicItem();
+
 private:
     Ui::SelectedPicItemWidget *ui;
     QString imgPath;
 
 private:
     void initView();
+
 };
 
 #endif // SELECTEDPICITEMWIDGET_H

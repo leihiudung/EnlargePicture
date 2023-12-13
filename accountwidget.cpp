@@ -32,4 +32,5 @@ void AccountWidget::initView()
 
     ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background: #CBD0DF;"
                                           "width: 260px; height:36px;};");
+    connect(ui->register_login_btn, &QPushButton::clicked, [=](){});
 }

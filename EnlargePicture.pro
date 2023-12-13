@@ -17,6 +17,7 @@ msvc {
 
 SOURCES += \
     accountwidget.cpp \
+    enlargeparamselectwidget.cpp \
     enlargewidget.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     accountwidget.h \
+    enlargeparamselectwidget.h \
     enlargewidget.h \
     mainwindow.h \
     menberwidget.h \
@@ -36,6 +38,7 @@ HEADERS += \
 
 FORMS += \
     accountwidget.ui \
+    enlargeparamselectwidget.ui \
     enlargewidget.ui \
     mainwindow.ui \
     menberwidget.ui \

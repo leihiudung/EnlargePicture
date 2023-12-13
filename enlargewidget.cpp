@@ -45,6 +45,7 @@ void EnlargeWidget::initView()
 
 void EnlargeWidget::initItem(const QString &imgPath)
 {
+
     SelectedPicItemWidget *widget = new SelectedPicItemWidget(imgPath, ui->selected_list_widget);
     //将widget作为列表的item
     QListWidgetItem *ITEM = new QListWidgetItem();
@@ -53,6 +54,13 @@ void EnlargeWidget::initItem(const QString &imgPath)
     ui->selected_list_widget->addItem(ITEM);
     ui->selected_list_widget->setItemWidget(ITEM, widget);
 
+    connect(widget, &SelectedPicItemWidget::comfirnEnlargeParamSignal, [=](){
+        qDebug("Clicked");
+    });
+
+    connect(widget, &SelectedPicItemWidget::closeSelectedPicItem, [=](){
+        delete ITEM;
+    });
 }
 
 void EnlargeWidget::initItem(const QString &str, const QString &picmap)
@@ -108,6 +116,16 @@ void EnlargeWidget::initItem(const QString &str, const QString &picmap)
     ITEM->setSizeHint(QSize(120, 107));
     ui->selected_list_widget->addItem(ITEM);
     ui->selected_list_widget->setItemWidget(ITEM, widget);
+}
+
+void EnlargeWidget::deleteItem(int row)
+{
+//    ui->selected_list_widget->removeItemWidget(item);
+
+//    qDebug("selected index %d", item);
+
+//    int row = ui->selected_list_widget->currentRow();
+    ui->selected_list_widget->takeItem(row);
 }
 
 void EnlargeWidget::selectPicBtnSlot(bool checked)
