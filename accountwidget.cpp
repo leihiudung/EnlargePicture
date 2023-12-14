@@ -7,6 +7,38 @@ AccountWidget::AccountWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initView();
+    connect(ui->eamil_edit, &QLineEdit::textChanged, [=](const QString &content){
+        emailEditValuable = content.length() > 0 ? true : false;
+        if (emailEditValuable && passwordEditValuable) {
+            ui->register_login_btn->setEnabled(true);
+            ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background-color: #4586E4;width: 260px; height:36px;};");
+
+        } else {
+            ui->register_login_btn->setEnabled(false);
+            ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background-color: #CBD0DF;width: 260px; height:36px;};");
+        }
+    });
+    connect(ui->password_edit, &QLineEdit::textChanged, [=](const QString &content){
+        passwordEditValuable = content.length() > 0 ? true : false;
+        if (emailEditValuable && passwordEditValuable) {
+            qDebug("3");
+            ui->register_login_btn->setEnabled(true);
+            ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background-color: #4586E4;width: 260px; height:36px;};");
+        } else {
+            qDebug("4");
+            ui->register_login_btn->setEnabled(false);
+            ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background-color: #CBD0DF;width: 260px; height:36px;};");
+        }
+    });
+
+    connect(ui->register_login_btn, &QPushButton::clicked, [=](){
+        if (ui->register_checkbox->checkState() == Qt::Checked) {
+
+        } else {
+            emit loggedSignal();
+        }
+    });
+
 }
 
 AccountWidget::~AccountWidget()
@@ -30,7 +62,8 @@ void AccountWidget::initView()
 
     ui->forget_password_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei; color:#4586E4;text-align: right;};");
 
-    ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background: #CBD0DF;"
-                                          "width: 260px; height:36px;};");
-    connect(ui->register_login_btn, &QPushButton::clicked, [=](){});
+    ui->register_login_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei;color:white;background-color: #CBD0DF;width: 260px; height:36px;};"
+                                          "QPushButton:!enable{border: none;font: 16px Microsoft YaHei;color:white;background-color: #CBD0DF;width: 260px; height:36px;};");
+    ui->register_login_btn->setCursor(QCursor(Qt::PointingHandCursor));
+    ui->register_login_btn->setEnabled(false);
 }

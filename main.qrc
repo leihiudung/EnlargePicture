@@ -15,7 +15,7 @@
         <file alias="enlarge_del_btn">images/删除.png</file>
         <file alias="enlarge_add_border">images/添加图片-大框.png</file>
         <file>images/推荐.png</file>
-        <file>images/退出.png</file>
+        <file alias="logout">images/退出.png</file>
         <file alias="wechat">images/微信.png</file>
         <file>images/问号图标.png</file>
         <file>images/圆圈-未选中.png</file>

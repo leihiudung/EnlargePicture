@@ -4,6 +4,7 @@
 #include "accountwidget.h"
 #include "menberwidget.h"
 #include "settingwidget.h"
+#include "accountdetailwidget.h"
 
 #include <QGraphicsDropShadowEffect>
 #include <QFileInfo>
@@ -50,13 +51,18 @@ widget::widget(QWidget *parent) :
 
     ui->function_stack_widget->addWidget(new EnlargeWidget());
 
-    ui->function_stack_widget->insertWidget(1, new AccountWidget());
+    AccountWidget *accountWidget = new AccountWidget();
+    ui->function_stack_widget->insertWidget(1, accountWidget);
 
     ui->function_stack_widget->insertWidget(2, new MenberWidget());
 
     ui->function_stack_widget->insertWidget(3, new SettingWidget());
 
-//    connect(ui->option_list_widget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(itemClicked(QListWidgetItem*)));
+    connect(accountWidget, &AccountWidget::loggedSignal, [=](){
+        ui->function_stack_widget->insertWidget(1, new AccountDetailWidget());
+        ui->function_stack_widget->setCurrentIndex(1);
+        ui->function_stack_widget->removeWidget(accountWidget);
+    });
     connect(ui->option_list_widget,&QListWidget::pressed,[=](QModelIndex pos){
 //        qDebug()<<"m_ListWidget pos.row:"<<pos.row();
         int optionIndex = pos.row();
