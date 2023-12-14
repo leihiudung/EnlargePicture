@@ -9,6 +9,7 @@ EnlargeDetailItemWidget::EnlargeDetailItemWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initView();
+
 }
 
 EnlargeDetailItemWidget::~EnlargeDetailItemWidget()

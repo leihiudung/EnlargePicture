@@ -1,5 +1,6 @@
 #include "accountwidget.h"
 #include "ui_accountwidget.h"
+#include "retrievepasswordwidget.h"
 
 AccountWidget::AccountWidget(QWidget *parent) :
     QWidget(parent),
@@ -37,6 +38,13 @@ AccountWidget::AccountWidget(QWidget *parent) :
         } else {
             emit loggedSignal();
         }
+    });
+
+    connect(ui->forget_password_btn, &QPushButton::clicked, [=](){
+        RetrievePasswordWidget *widget = new RetrievePasswordWidget();
+        widget->setWindowModality(Qt::ApplicationModal);
+        widget->show();
+
     });
 
 }

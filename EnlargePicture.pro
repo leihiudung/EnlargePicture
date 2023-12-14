@@ -24,6 +24,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menberwidget.cpp \
+    resetpasswordwidget.cpp \
+    retrievepasswordwidget.cpp \
     selectedpicitemwidget.cpp \
     settingwidget.cpp \
     widget.cpp
@@ -36,6 +38,8 @@ HEADERS += \
     enlargewidget.h \
     mainwindow.h \
     menberwidget.h \
+    resetpasswordwidget.h \
+    retrievepasswordwidget.h \
     selectedpicitemwidget.h \
     settingwidget.h \
     widget.h
@@ -48,6 +52,8 @@ FORMS += \
     enlargewidget.ui \
     mainwindow.ui \
     menberwidget.ui \
+    resetpasswordwidget.ui \
+    retrievepasswordwidget.ui \
     selectedpicitemwidget.ui \
     settingwidget.ui \
     widget.ui
