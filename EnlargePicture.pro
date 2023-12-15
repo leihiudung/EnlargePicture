@@ -16,29 +16,47 @@ msvc {
 }
 
 SOURCES += \
+    accountdetailwidget.cpp \
     accountwidget.cpp \
+    enlargedetailitemwidget.cpp \
+    enlargeparamselectwidget.cpp \
     enlargewidget.cpp \
     main.cpp \
     mainwindow.cpp \
     menberwidget.cpp \
+    paymentwidget.cpp \
+    resetpasswordwidget.cpp \
+    retrievepasswordwidget.cpp \
     selectedpicitemwidget.cpp \
     settingwidget.cpp \
     widget.cpp
 
 HEADERS += \
+    accountdetailwidget.h \
     accountwidget.h \
+    enlargedetailitemwidget.h \
+    enlargeparamselectwidget.h \
     enlargewidget.h \
     mainwindow.h \
     menberwidget.h \
+    paymentwidget.h \
+    resetpasswordwidget.h \
+    retrievepasswordwidget.h \
     selectedpicitemwidget.h \
     settingwidget.h \
     widget.h
 
 FORMS += \
+    accountdetailwidget.ui \
     accountwidget.ui \
+    enlargedetailitemwidget.ui \
+    enlargeparamselectwidget.ui \
     enlargewidget.ui \
     mainwindow.ui \
     menberwidget.ui \
+    paymentwidget.ui \
+    resetpasswordwidget.ui \
+    retrievepasswordwidget.ui \
     selectedpicitemwidget.ui \
     settingwidget.ui \
     widget.ui

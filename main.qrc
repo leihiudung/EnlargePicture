@@ -9,13 +9,13 @@
         <file alias="option_menber">images/开通会员.png</file>
         <file alias="enlarge_add_img">images/添加图片-中央.png</file>
         <file>images/VIP.png</file>
-        <file>images/弹窗-关闭图标.png</file>
+        <file alias="dialog_close_icon">images/弹窗-关闭图标.png</file>
         <file alias="enlarge_big_btn">images/放大.png</file>
-        <file>images/扫一扫.png</file>
+        <file alias="scan_qr_code">images/扫一扫.png</file>
         <file alias="enlarge_del_btn">images/删除.png</file>
         <file alias="enlarge_add_border">images/添加图片-大框.png</file>
-        <file>images/推荐.png</file>
-        <file>images/退出.png</file>
+        <file alias="recommand_img">images/推荐.png</file>
+        <file alias="logout">images/退出.png</file>
         <file alias="wechat">images/微信.png</file>
         <file>images/问号图标.png</file>
         <file>images/圆圈-未选中.png</file>

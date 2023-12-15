@@ -14,9 +14,12 @@ class AccountWidget : public QWidget
 public:
     explicit AccountWidget(QWidget *parent = nullptr);
     ~AccountWidget();
-
+signals:
+    void loggedSignal();
 private:
     Ui::AccountWidget *ui;
+    bool emailEditValuable = false;
+    bool passwordEditValuable = false;
 
 private:
     void initView();
