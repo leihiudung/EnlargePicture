@@ -10,7 +10,7 @@ ResetPasswordWidget::ResetPasswordWidget(QWidget *parent) :
     ui->setupUi(this);
     initView();
 
-    connect(ui->close_btn, &QPushButton::clicked, [=](){
+    connect(ui->close_btn, &QToolButton::clicked, [=](){
         close();
     });
 

@@ -1,8 +1,13 @@
 #include "menberwidget.h"
 #include "ui_menberwidget.h"
+#include "paymentwidget.h"
+
+#include <QDebug>
 #include <QGraphicsDropShadowEffect>
 #include <QTextDocument>
 #include <QTextBlock>
+#include <QResizeEvent>
+#include <QLabel>
 
 MenberWidget::MenberWidget(QWidget *parent) :
     QWidget(parent),
@@ -10,6 +15,12 @@ MenberWidget::MenberWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initView();
+
+    connect(ui->wechat_pay_highter_btn, &QPushButton::clicked, [=](){
+        PaymentWidget *widget = new PaymentWidget();
+        widget->setWindowModality(Qt::ApplicationModal);
+        widget->show();
+    });
 }
 
 MenberWidget::~MenberWidget()
@@ -17,10 +28,18 @@ MenberWidget::~MenberWidget()
     delete ui;
 }
 
+void MenberWidget::paintEvent(QPaintEvent *event)
+{
+
+    qDebug() << "进入Degub" << event->rect().width();
+
+}
+
 void MenberWidget::initView()
 {
-    QLabel *recomLabl = new QLabel(this);
-    QPixmap myPix(":/images/member_recommand_img");
+
+    recomLabl = new QLabel(this);
+
 //    ui->member_stand_label->setPixmap(myPix);
 //    ui->member_stand_label->setFixedSize(211, 68);
 
@@ -40,11 +59,11 @@ void MenberWidget::initView()
                                               "font:12px Microsoft YaHei;"
                                               "color: #fff;text-align : left;padding-left: 8px;}");
 
-    ui->wechat_pay_stand_btn->setStyleSheet("QPushButton{background: #63C42E;border-radius: 2px;"
-                                              "width: 96px;height:30px;"
-                                              "qproperty-icon: url(:/images/wechat);"
-                                              "font:12px Microsoft YaHei;"
-                                              "color: #fff;text-align : left;padding-left: 8px;}");
+//    ui->wechat_pay_stand_btn->setStyleSheet("QPushButton{background: #63C42E;border-radius: 2px;"
+//                                              "width: 96px;height:30px;max-width: 126px;max-height:36px;"
+//                                              "qproperty-icon: url(:/images/wechat);"
+//                                              "font:12px Microsoft YaHei;"
+//                                              "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->ali_pay_stand_btn->setStyleSheet("QPushButton{background: #02A9F1;border-radius: 2px;"
                                            "width: 96px;height:30px;"
@@ -53,7 +72,7 @@ void MenberWidget::initView()
                                            "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->wechat_pay_base_btn->setStyleSheet("QPushButton{background: #63C42E;border-radius: 2px;"
-                                              "width: 96px;height:30px;"
+                                              "width: 96px;height:30px;max-width:144px;max-height:45px;min-width:96px;min-height:30px;"
                                               "qproperty-icon: url(:/images/wechat);"
                                               "font:12px Microsoft YaHei;"
                                               "color: #fff;text-align : left;padding-left: 8px;}");
@@ -64,8 +83,23 @@ void MenberWidget::initView()
                                            "font:12px Microsoft YaHei;"
                                            "color: #fff;text-align : left;padding-left: 8px;}");
 
+    QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+//    ui->wechat_pay_stand_btn->setSizePolicy(sizePolicy);
+
+
     ui->widget_9->setStyleSheet("QWidget{padding-left:9px;");
 
+    ui->wechat_pay_highter_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+    ui->wechat_pay_stand_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+    ui->wechat_pay_base_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+    ui->ali_pay_highter_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+    ui->ali_pay_stand_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
+    ui->ali_pay_base_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
 
     //设置具体阴影
@@ -142,5 +176,23 @@ void MenberWidget::initView()
     ui->widget_6->setGraphicsEffect(hightShadow);
     ui->widget_7->setGraphicsEffect(standShadow);
     ui->widget_8->setGraphicsEffect(shadow_effect);
+
+//    QPoint labRect = ui->member_stand_label->mapTo(ui->widget_3->pos());
+//    ui->member_stand_browser->(QCursor::pos());
+//    QPoint parentPos = ui->member_stand_label->mapFromParent(ui->widget_3->pos());
+//        int jj = globalPos.x();
+
+
+    int widthj =  ui->widget_3->width();
+    qDebug() << ui->widget_3->sizeIncrement() << ";" << ui->widget_3->minimumSizeHint() << "==" << ui->member_stand_label->sizeHint().width();
+
+    QImage recomImg(":/images/recommand_img");
+
+    QPixmap myPix(":/images/recommand_img");
+    recomLabl->setPixmap(QPixmap::fromImage(recomImg));
+    recomLabl->setGeometry(33 + 174 * 3 + 10 * 3, ui->member_stand_label->height(), 66, 68);
+
+
+
 
 }

@@ -10,7 +10,7 @@ AccountDetailWidget::AccountDetailWidget(QWidget *parent) :
     ui->setupUi(this);
     initView();
     initView();
-
+//0440051271860 The Economic Naturalist
     connect(ui->edit_pwd_btn, &QPushButton::clicked, [=](){
         ResetPasswordWidget *pwdWidget = new ResetPasswordWidget();
         pwdWidget->setWindowModality(Qt::ApplicationModal);
