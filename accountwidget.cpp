@@ -63,10 +63,12 @@ void AccountWidget::initView()
     ui->register_login_btn->setText(QString("登陆/注册"));
 
     ui->eamil_edit->setStyleSheet("QLineEdit{background: #FCFDFF;border: 1px solid #C0C6D9;"
-                                  "width:260px;height:36px;font: 12px Microsoft YaHei; };");
+                                  "height:36px;min-height:36px;max-height:42px;font: 12px Microsoft YaHei; };");
 
     ui->password_edit->setStyleSheet("QLineEdit{background: #FCFDFF;border: 1px solid #C0C6D9;"
-                                     "width:260px;height:36px;font: 12px Microsoft YaHei; };");
+                                     "height:36px;font: 12px Microsoft YaHei; };");
+
+    ui->register_checkbox->setStyleSheet("QCheckBox{font: 12px Microsoft YaHei;color: #333;}");
 
     ui->forget_password_btn->setStyleSheet("QPushButton{border: none;font: 12px Microsoft YaHei; color:#4586E4;text-align: right;};");
 

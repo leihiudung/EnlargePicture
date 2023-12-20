@@ -89,11 +89,11 @@ void EnlargeParamSelectWidget::initView()
     magnificationGroup->addButton(ui->magn_radio_32, 32);
 
     qualityGroup = new QButtonGroup(this);
+    qualityGroup->addButton(ui->quality_radio_0, -1);
     qualityGroup->addButton(ui->quality_radio_1, 0);
     qualityGroup->addButton(ui->quality_radio_2, 1);
     qualityGroup->addButton(ui->quality_radio_3, 2);
     qualityGroup->addButton(ui->quality_radio_4, 3);
-    qualityGroup->addButton(ui->quality_radio_5, 4);
 
 }
 

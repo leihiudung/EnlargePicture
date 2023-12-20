@@ -1,12 +1,15 @@
 #include "enlargewidget.h"
 #include "ui_enlargewidget.h"
 #include "selectedpicitemwidget.h"
+#include "enlargethread.h"
 
 #include <QDebug>
 #include <QLabel>
 #include <QMouseEvent>
 #include <QPushButton>
 #include <QFileDialog>
+#include <QStandardPaths>
+#include <QDateTime>
 
 EnlargeWidget::EnlargeWidget(QWidget *parent) :
     QWidget(parent),
@@ -32,15 +35,17 @@ EnlargeWidget::~EnlargeWidget()
     delete ui;
 }
 
+
 void EnlargeWidget::initView()
 {
     ui->selected_list_widget->setGridSize(QSize(30, 120));
     ui->pushButton->setStyleSheet("QPushButton{background: transparent;border-radius: 2px;"
-                                  "border-image:url(:/images/enlarge_add_border);"
-                                   "border-radius: 15px;height:128px;"
-                                   "qproperty-icon: url(:/images/enlarge_add_img);icon-size: 20px 20px;"
-                                   "font:20px Microsoft YaHei;"
-                                   "color: #444;}");
+                                    "border-image:url(:/images/enlarge_add_border);"
+                                    "border-radius: 15px;font-size:20px;"
+                                    "qproperty-icon: url(:/images/enlarge_add_img);"
+                                    "icon-size: 20px 20px;"
+                                "color: #444;}");
+
 }
 
 void EnlargeWidget::initItem(const QString &imgPath)
@@ -54,13 +59,15 @@ void EnlargeWidget::initItem(const QString &imgPath)
     ui->selected_list_widget->addItem(ITEM);
     ui->selected_list_widget->setItemWidget(ITEM, widget);
 
-    connect(widget, &SelectedPicItemWidget::comfirnEnlargeParamSignal, [=](){
-        qDebug("Clicked");
+    connect(widget, &SelectedPicItemWidget::comfirnEnlargeParamSignal, [=](int typeIndex, int scaleIndex, int noiseIndex){
+        enlargePic(imgPath, scaleIndex, noiseIndex);
     });
 
     connect(widget, &SelectedPicItemWidget::closeSelectedPicItem, [=](){
         delete ITEM;
     });
+
+    connect(this, &EnlargeWidget::enlargeFinishSignal, widget, &SelectedPicItemWidget::enlargeFinishSlot);
 }
 
 void EnlargeWidget::initItem(const QString &str, const QString &picmap)
@@ -78,7 +85,7 @@ void EnlargeWidget::initItem(const QString &str, const QString &picmap)
     TypeLabel->setFixedSize(18, 18);
     TypeLabel->setPixmap(myPix);
     TypeLabel->setScaledContents(true);
-    TypeLabel->setStyleSheet("QLabel{width: 92px;height: 92px;min-width:92px;min-height:92px;max-width:92px;max-height:92px;}");
+//    TypeLabel->setStyleSheet("QLabel{width: 92px;height: 92px;min-width:92px;min-height:92px;max-width:192px;max-height:192px;}");
 
     QPushButton *enlargeBtn = new QPushButton(widget);
     enlargeBtn->setText(QString("HI"));
@@ -126,6 +133,67 @@ void EnlargeWidget::deleteItem(int row)
 
 //    int row = ui->selected_list_widget->currentRow();
     ui->selected_list_widget->takeItem(row);
+}
+
+void EnlargeWidget::enlargePic(QString originPath, int increase, int denoise)
+{
+    QFileInfo fileInfo = QFileInfo(originPath);
+
+    QString desktop_path = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+
+    QString filePath = QDir::currentPath();
+    QString EXEName_src = ":/exe/waifu";
+    QString EXEName_Dst = "waifu2x-ncnn-vulkan_boxed.exe";
+
+    QString EXEName_Cmd = "waifu2x-ncnn-vulkan_boxed.exe -i ";
+    QString EXE_CMD = EXEName_Cmd.append(originPath).append(" -o ").append(desktop_path).append("/").append(fileInfo.baseName()).append(".png -n ").append(QString::number(denoise)).append(" -s ").append(QString::number(increase));
+    qDebug() << EXE_CMD;
+    QFile EXEFile_src(EXEName_src);
+    QFile EXEFile_Dst(EXEName_Dst);
+
+    if (EXEFile_Dst.open(QIODevice::WriteOnly)) {
+        if (EXEFile_src.open(QIODevice::ReadOnly)) {
+            QByteArray tmp = EXEFile_src.readAll();
+            EXEFile_Dst.write(tmp);
+        }
+    }
+    EXEFile_Dst.close();
+    EXEFile_src.close();
+    QString CMD = EXE_CMD;
+
+    QImage improveImg;
+    QMap<QString, QString> imgInfo;
+    if (improveImg.load(fileInfo.filePath())) {
+        QDateTime dateTime= QDateTime::currentDateTime();
+        imgInfo["file_timestamp"] = QString::number(dateTime.toTime_t());
+        imgInfo["file_name"] = fileInfo.fileName();
+        imgInfo["file_path"] = fileInfo.filePath();
+        imgInfo["argument"] = QString("放大级别:%1 降噪级别:%2 分辨率:%3*%4").arg(increase).arg(denoise).arg(improveImg.width()).arg(improveImg.height());
+
+                                      imgInfo["time"] = dateTime.toString("yyyy-MM-dd HH:mm");
+        qDebug() << "保存路径" << fileInfo.filePath();
+    }
+
+
+
+    EnlargeThread *enlargeThread = new EnlargeThread();
+    connect(enlargeThread, &EnlargeThread::finishEnlargeSignal, this, &EnlargeWidget::enlargeThreadFinishSlot);
+    enlargeThread->EXE_CMD = EXE_CMD;
+    enlargeThread->imageInfo = imgInfo;
+    enlargeThread->start();
+
+}
+
+void EnlargeWidget::enlargeThreadFinishSlot(bool flag)
+{
+    QString EXEName_Dst = "waifu2x-ncnn-vulkan_boxed.exe";
+    QFile::remove(EXEName_Dst); //删掉exe文件
+    emit enlargeFinishSignal();
+}
+
+void EnlargeWidget::upgrageProgressWidget(int percent)
+{
+
 }
 
 void EnlargeWidget::selectPicBtnSlot(bool checked)

@@ -14,14 +14,19 @@ class SelectedPicItemWidget : public QWidget
 public:
     explicit SelectedPicItemWidget(const QString &imgPath, QWidget *parent = nullptr);
     ~SelectedPicItemWidget();
+    void paintEvent(QPaintEvent *event);
 
 signals:
     void comfirnEnlargeParamSignal(int i, int j, int z);
     void closeSelectedPicItem();
 
+public slots:
+    void enlargeFinishSlot();
+
 private:
     Ui::SelectedPicItemWidget *ui;
     QString imgPath;
+    float m_fScale;
 
 private:
     void initView();

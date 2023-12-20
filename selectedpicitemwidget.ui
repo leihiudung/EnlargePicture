@@ -35,20 +35,16 @@ padding: 20px;
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,8,3,71,0">
-     <item>
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,86">
+     <property name="spacing">
+      <number>30</number>
+     </property>
+     <property name="leftMargin">
+      <number>24</number>
+     </property>
+     <property name="rightMargin">
+      <number>44</number>
+     </property>
      <item>
       <widget class="QLabel" name="pic_label">
        <property name="text">
@@ -57,86 +53,94 @@ padding: 20px;
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="17,83" rowminimumheight="0,0,0">
-       <property name="topMargin">
-        <number>6</number>
-       </property>
-       <property name="bottomMargin">
-        <number>4</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>9</number>
-       </property>
-       <item row="1" column="0" colspan="2">
-        <widget class="QLabel" name="pic_info_label">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="62,62">
-         <property name="spacing">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="pic_big_btn">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+      <widget class="QWidget" name="pic_info_widget" native="true">
+       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="17,0">
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>4</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>9</number>
+        </property>
+        <item row="2" column="0">
+         <widget class="QWidget" name="btns_widget" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,6">
+           <property name="spacing">
+            <number>10</number>
            </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
+           <property name="leftMargin">
+            <number>0</number>
            </property>
-           <property name="text">
-            <string> 放大</string>
+           <property name="topMargin">
+            <number>0</number>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pic_del_btn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
+           <property name="rightMargin">
+            <number>0</number>
            </property>
-           <property name="text">
-            <string> 删除</string>
+           <property name="bottomMargin">
+            <number>0</number>
            </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QProgressBar" name="pic_big_progress">
-         <property name="styleSheet">
-          <string notr="true">
+           <item>
+            <widget class="QPushButton" name="pic_big_btn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string> 放大</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pic_del_btn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string> 删除</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QLabel" name="pic_info_label">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="QProgressBar" name="pic_big_progress">
+          <property name="styleSheet">
+           <string notr="true">
 
 QProgressBar#pic_big_progress::chunk{
 background-color: #4586E4;
@@ -145,29 +149,17 @@ background-color: #4586E4;
 #pic_big_progress {
 height: 5px;min-height:5px;max-height:5px;background-color:white;
 }</string>
-         </property>
-         <property name="value">
-          <number>24</number>
-         </property>
-         <property name="format">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="format">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
     </layout>
    </item>

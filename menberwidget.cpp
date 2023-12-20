@@ -48,13 +48,13 @@ void MenberWidget::initView()
 
 
     ui->wechat_pay_highter_btn->setStyleSheet("QPushButton{background: #63C42E;border-radius: 2px;"
-                                   "width: 96px;height:30px;"
+                                              "height:30px;max-height:46px;"
                                    "qproperty-icon: url(:/images/wechat);"
                                    "font:12px Microsoft YaHei;"
                                    "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->ali_pay_highter_btn->setStyleSheet("QPushButton{background: #02A9F1;border-radius: 2px;"
-                                              "width: 96px;height:30px;"
+                                           "height:30px;max-height:46px;"
                                               "qproperty-icon: url(:/images/ali);"
                                               "font:12px Microsoft YaHei;"
                                               "color: #fff;text-align : left;padding-left: 8px;}");
@@ -66,22 +66,22 @@ void MenberWidget::initView()
 //                                              "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->ali_pay_stand_btn->setStyleSheet("QPushButton{background: #02A9F1;border-radius: 2px;"
-                                           "width: 96px;height:30px;"
+                                         "height:30px;max-height:46px;"
                                            "qproperty-icon: url(:/images/ali);"
                                            "font:12px Microsoft YaHei;"
                                            "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->wechat_pay_base_btn->setStyleSheet("QPushButton{background: #63C42E;border-radius: 2px;"
-                                              "width: 96px;height:30px;max-width:144px;max-height:45px;min-width:96px;min-height:30px;"
+                                           "height:30px;max-height:46px;"
                                               "qproperty-icon: url(:/images/wechat);"
                                               "font:12px Microsoft YaHei;"
                                               "color: #fff;text-align : left;padding-left: 8px;}");
 
     ui->ali_pay_base_btn->setStyleSheet("QPushButton{background: #02A9F1;border-radius: 2px;"
-                                           "width: 96px;height:30px;"
-                                           "qproperty-icon: url(:/images/ali);"
-                                           "font:12px Microsoft YaHei;"
-                                           "color: #fff;text-align : left;padding-left: 8px;}");
+                                            "height:30px;max-height:46px;"
+                                            "qproperty-icon: url(:/images/ali);"
+                                            "font:12px Microsoft YaHei;"
+                                            "color: #fff;text-align : left;padding-left: 8px;}");
 
     QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 //    ui->wechat_pay_stand_btn->setSizePolicy(sizePolicy);
@@ -191,8 +191,5 @@ void MenberWidget::initView()
     QPixmap myPix(":/images/recommand_img");
     recomLabl->setPixmap(QPixmap::fromImage(recomImg));
     recomLabl->setGeometry(33 + 174 * 3 + 10 * 3, ui->member_stand_label->height(), 66, 68);
-
-
-
 
 }

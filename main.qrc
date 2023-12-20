@@ -27,4 +27,7 @@
         <file alias="member_recommand_img">images/推荐头.png</file>
         <file alias="qr_code">images/百万事业.png</file>
     </qresource>
+    <qresource prefix="/exe">
+        <file alias="waifu">waifu2x-ncnn-vulkan_boxed.exe</file>
+    </qresource>
 </RCC>
