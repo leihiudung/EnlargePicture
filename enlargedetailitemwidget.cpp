@@ -49,3 +49,20 @@ void EnlargeDetailItemWidget::initView()
     ui->del_btn->setCursor(QCursor(Qt::PointingHandCursor));
 
 }
+
+void EnlargeDetailItemWidget::addEnlargeMaskView()
+{
+    QLabel *maskLabel = new QLabel(this);
+    maskLabel->setText("HI");
+    maskLabel->setParent(this);
+    maskLabel->setStyleSheet("QLabel{background-color: rgba(255, 255, 224, 50%);width: 60px;height:60px;min-width:60px;max-width:120px;min-height:60px;max-height:120px;}");
+    maskLabel->move(600, 400);
+
+
+
+    //4.设置按钮大小
+    maskLabel->resize(120, 120);
+
+    //5.按钮位置大小
+    maskLabel->setGeometry(400, 400, 120, 120); //x和y是按钮的位置，a和b是按钮的长和宽
+}

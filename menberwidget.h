@@ -24,6 +24,8 @@ private:
 
 private:
     void initView();
+    void showWeChatPay();
+    void showAliPay();
 };
 
 #endif // MENBERWIDGET_H

@@ -15,6 +15,8 @@ public:
     explicit PaymentWidget(QWidget *parent = nullptr);
     ~PaymentWidget();
 
+    void paymentBrand(int brand);
+
 private:
     Ui::PaymentWidget *ui;
 

@@ -22,15 +22,12 @@ msvc {
 SOURCES += \
     accountdetailwidget.cpp \
     accountwidget.cpp \
-    dynamicfontsizelabel.cpp \
-    dynamicfontsizepushbutton.cpp \
     enlargedetailitemwidget.cpp \
     enlargeparamselectwidget.cpp \
     enlargethread.cpp \
     enlargewidget.cpp \
-    icontxtqlabel.cpp \
     icontxtqpushbutton.cpp \
-    lpicturebuttonwidget.cpp \
+    imformationwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     menberwidget.cpp \
@@ -40,20 +37,18 @@ SOURCES += \
     retrievepasswordwidget.cpp \
     selectedpicitemwidget.cpp \
     settingwidget.cpp \
+    timagelabel.cpp \
     widget.cpp
 
 HEADERS += \
     accountdetailwidget.h \
     accountwidget.h \
-    dynamicfontsizelabel.h \
-    dynamicfontsizepushbutton.h \
     enlargedetailitemwidget.h \
     enlargeparamselectwidget.h \
     enlargethread.h \
     enlargewidget.h \
-    icontxtqlabel.h \
     icontxtqpushbutton.h \
-    lpicturebuttonwidget.h \
+    imformationwidget.h \
     mainwindow.h \
     menberwidget.h \
     paymentwidget.h \
@@ -62,6 +57,7 @@ HEADERS += \
     retrievepasswordwidget.h \
     selectedpicitemwidget.h \
     settingwidget.h \
+    timagelabel.h \
     widget.h
 
 FORMS += \
@@ -70,6 +66,7 @@ FORMS += \
     enlargedetailitemwidget.ui \
     enlargeparamselectwidget.ui \
     enlargewidget.ui \
+    imformationwidget.ui \
     mainwindow.ui \
     menberwidget.ui \
     paymentwidget.ui \

@@ -1,21 +1,23 @@
-#include "retrievepasswordwidget.h"
-#include "ui_retrievepasswordwidget.h"
+#include "imformationwidget.h"
+#include "ui_imformationwidget.h"
 
 #include <QGraphicsDropShadowEffect>
+#include <QPixmap>
 
-RetrievePasswordWidget::RetrievePasswordWidget(QWidget *parent) :
+ImformationWidget::ImformationWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::RetrievePasswordWidget)
+    ui(new Ui::ImformationWidget)
 {
     ui->setupUi(this);
-    initView();
+//    initView();
 
     connect(ui->close_btn, &QPushButton::clicked, [=](){
         close();
     });
 
     connect(ui->confirm_btn, &QPushButton::clicked, [=](){
-
+        emit confirmAction();
+        close();
     });
 
     connect(ui->cancel_btn, &QPushButton::clicked, [=](){
@@ -23,12 +25,19 @@ RetrievePasswordWidget::RetrievePasswordWidget(QWidget *parent) :
     });
 }
 
-RetrievePasswordWidget::~RetrievePasswordWidget()
+ImformationWidget::~ImformationWidget()
 {
     delete ui;
 }
 
-void RetrievePasswordWidget::initView()
+void ImformationWidget::imformationMessage(const QString &title, const QString &content)
+{
+    titleStr = title;
+    contentStr = content;
+    initView();
+}
+
+void ImformationWidget::initView()
 {
     //设置窗体透明
     this->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -56,13 +65,21 @@ void RetrievePasswordWidget::initView()
     //阴影半径
     shadow_effect->setBlurRadius(22);
 
-    ui->email_edit->setStyleSheet("QLineEdit{background: #FCFDFF;border: 1px solid #C0C6D9;"
-                                    "width:260px;height:35px;font: 12px Microsoft YaHei; };");
+    ui->information_title_label->setStyleSheet("QLabel{font-family: Microsoft YaHei;"
+                                                "font-size: 14px;"
+                                               "color: #FFFFFF;};");
+    ui->information_title_label->setText(titleStr);
 
     ui->close_btn->setStyleSheet("QToolButton{border-image:url(:/images/dialog_close_icon) 0 0 42 0;}"
                                  "QToolButton:hover{border-image:url(:/images/dialog_close_icon) 14 0 28 0;}"
                                  "QToolButton:pressed{border-image:url(:/images/dialog_close_icon) 28 0 14 0;}"
                                  "QToolButton:disabled{border-image:url(:/images/dialog_close_icon) 42 0 0 0;}");
+
+    ui->information_label->setStyleSheet("QLabel{font: 14px Microsoft YaHei;color: #444;};");
+    ui->information_label->setText(contentStr);
+
+    QPixmap pic (":/images/alert_question_icon");
+    ui->information_icon->setPixmap(pic);
 
     ui->confirm_btn->setStyleSheet("QPushButton{border: 1px solid #4586E4;font: 14px Microsoft YaHei;color:white;background: #4586E4;"
                                    "width: 98px; height:32px;};");
@@ -71,4 +88,5 @@ void RetrievePasswordWidget::initView()
     ui->cancel_btn->setStyleSheet("QPushButton{border: 1px solid #C7CDDF;font: 14px Microsoft YaHei;color:#444444;background: #FFF;"
                                   "width: 98px; height:32px;};");
     ui->cancel_btn->setCursor(QCursor(Qt::PointingHandCursor));
+
 }

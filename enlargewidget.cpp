@@ -2,6 +2,7 @@
 #include "ui_enlargewidget.h"
 #include "selectedpicitemwidget.h"
 #include "enlargethread.h"
+#include "imformationwidget.h"
 
 #include <QDebug>
 #include <QLabel>
@@ -17,7 +18,6 @@ EnlargeWidget::EnlargeWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     initView();
-
     ui->selected_list_widget->setStyleSheet("QListWidget{border:none;}"
                                             "QListWidget::Item:hover{background:transparent;}"//悬浮
                                             "QListWidget::Item:pressed{background:#E8E9ED;}"//按下
@@ -63,7 +63,19 @@ void EnlargeWidget::initItem(const QString &imgPath)
         enlargePic(imgPath, scaleIndex, noiseIndex);
     });
 
+
     connect(widget, &SelectedPicItemWidget::closeSelectedPicItem, [=](){
+        ImformationWidget *widget = new ImformationWidget(this);
+        widget->imformationMessage("删除", "您确定删除吗?");
+        widget->setWindowModality(Qt::ApplicationModal);
+        connect(widget, &ImformationWidget::confirmAction, [=](){
+            delete ITEM;
+        });
+        widget->show();
+
+    });
+
+    connect(widget, &SelectedPicItemWidget::confirmCloseSelectedPicItem, [=](){
         delete ITEM;
     });
 
@@ -123,6 +135,7 @@ void EnlargeWidget::initItem(const QString &str, const QString &picmap)
     ITEM->setSizeHint(QSize(120, 107));
     ui->selected_list_widget->addItem(ITEM);
     ui->selected_list_widget->setItemWidget(ITEM, widget);
+
 }
 
 void EnlargeWidget::deleteItem(int row)

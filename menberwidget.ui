@@ -32,7 +32,7 @@ margin-left:19px;
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,1">
    <property name="spacing">
-    <number>10</number>
+    <number>20</number>
    </property>
    <property name="leftMargin">
     <number>33</number>
@@ -156,6 +156,9 @@ background-color: transparent;
 border: none;
 }
 </string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
               <property name="html">
                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -458,6 +461,9 @@ font: normal 14px  Microsoft YaHei;
 color: #fff;
 }</string>
         </property>
+        <property name="locale">
+         <locale language="Chinese" country="China"/>
+        </property>
         <property name="text">
          <string>标准版</string>
         </property>
@@ -504,6 +510,9 @@ box-shadow: 0 2px 4px 0 rgba(219,219,219,0.50);
 background-color: transparent;
 border: none;
 }</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
            <property name="html">
             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -714,6 +723,9 @@ background-color: transparent;
 border: none;
 /*letter-spacing:2px;*/
 }</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
            <property name="html">
             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;

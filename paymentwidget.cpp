@@ -8,7 +8,7 @@ PaymentWidget::PaymentWidget(QWidget *parent) :
     ui(new Ui::PaymentWidget)
 {
     ui->setupUi(this);
-    initView();
+//    initView();
 
     connect(ui->close_btn, &QToolButton::clicked, [=](){
         close();
@@ -48,9 +48,21 @@ void PaymentWidget::initView()
     //阴影半径
     shadow_effect->setBlurRadius(22);
 
+    ui->close_btn->setStyleSheet("QToolButton{border-image:url(:/images/dialog_close_icon) 0 0 42 0;}"
+                                 "QToolButton:hover{border-image:url(:/images/dialog_close_icon) 14 0 28 0;}"
+                                 "QToolButton:pressed{border-image:url(:/images/dialog_close_icon) 28 0 14 0;}"
+                                 "QToolButton:disabled{border-image:url(:/images/dialog_close_icon) 42 0 0 0;}");
+
+
     ui->qr_code_img->setStyleSheet("QLabel{border-image:url(:/images/qr_code);"
                                    "width:176px;height:176px;min-width:176px;min-height:176px;max-width:176px;max-height:176px;}");
     ui->scan_img->setStyleSheet("QLabel{border-image:url(:/images/scan_qr_code);"
                                 "width:22px;height:22px;min-width:22px;min-height:22px;max-width:22px;max-height:22px;}");
 
+}
+
+void PaymentWidget::paymentBrand(int brand)
+{
+    ui->payment_type->setText(brand == 0 ? "打开手机微信" : "打开手机支付宝");
+    initView();
 }

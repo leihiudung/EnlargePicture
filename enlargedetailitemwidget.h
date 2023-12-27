@@ -20,6 +20,7 @@ private:
 
 private:
     void initView();
+    void addEnlargeMaskView();
 
 };
 

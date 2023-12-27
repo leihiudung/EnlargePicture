@@ -99,7 +99,7 @@ max-height: 42px;
              <property name="styleSheet">
               <string notr="true">#name_label {
 font:  15px Microsoft YaHei ; 
-color: #333;
+color: #333333;
 }</string>
              </property>
              <property name="text">

@@ -17,9 +17,27 @@ MenberWidget::MenberWidget(QWidget *parent) :
     initView();
 
     connect(ui->wechat_pay_highter_btn, &QPushButton::clicked, [=](){
-        PaymentWidget *widget = new PaymentWidget();
-        widget->setWindowModality(Qt::ApplicationModal);
-        widget->show();
+        showWeChatPay();
+    });
+
+    connect(ui->wechat_pay_stand_btn, &QPushButton::clicked, [=](){
+        showWeChatPay();
+    });
+
+    connect(ui->wechat_pay_base_btn, &QPushButton::clicked, [=](){
+        showWeChatPay();
+    });
+
+    connect(ui->ali_pay_highter_btn, &QPushButton::clicked, [=](){
+        showAliPay();
+    });
+
+    connect(ui->ali_pay_stand_btn, &QPushButton::clicked, [=](){
+        showAliPay();
+    });
+
+    connect(ui->ali_pay_base_btn, &QPushButton::clicked, [=](){
+        showAliPay();
     });
 }
 
@@ -192,4 +210,20 @@ void MenberWidget::initView()
     recomLabl->setPixmap(QPixmap::fromImage(recomImg));
     recomLabl->setGeometry(33 + 174 * 3 + 10 * 3, ui->member_stand_label->height(), 66, 68);
 
+}
+
+void MenberWidget::showWeChatPay()
+{
+    PaymentWidget *widget = new PaymentWidget();
+    widget->paymentBrand(0);
+    widget->setWindowModality(Qt::ApplicationModal);
+    widget->show();
+}
+
+void MenberWidget::showAliPay()
+{
+    PaymentWidget *widget = new PaymentWidget();
+    widget->paymentBrand(1);
+    widget->setWindowModality(Qt::ApplicationModal);
+    widget->show();
 }

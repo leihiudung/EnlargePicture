@@ -17,7 +17,7 @@
         <file alias="recommand_img">images/推荐.png</file>
         <file alias="logout">images/退出.png</file>
         <file alias="wechat">images/微信.png</file>
-        <file>images/问号图标.png</file>
+        <file alias="alert_question_icon">images/问号图标.png</file>
         <file>images/圆圈-未选中.png</file>
         <file>images/圆圈-选中.png</file>
         <file alias="ali">images/支付宝.png</file>
